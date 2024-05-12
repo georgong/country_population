@@ -1,7 +1,7 @@
 
 let cur_year = 1901
 let pause = true
-let delay_time = 250
+let delay_time = 150
 let tooltipcountries = "China";
 async function load_data(year) {
     // load_data(year) => the sorted top 15 countries's populaton in a list
@@ -364,6 +364,14 @@ async function main() {
     // set the background color
     
 }
+const slider = document.querySelector('#slider');
+slider.addEventListener('click', function(event) {
+  const sliderRect = slider.getBoundingClientRect(); 
+  const progress = (event.clientX - sliderRect.left) / sliderRect.width; 
+  slider.value = progress * slider.max;
+  cur_year = 1900 + Math.floor((progress * slider.max));
+  update();
+});
 
 main()
 Animation()
